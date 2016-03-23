@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />-->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="baidu_union_verify" content="403ef54a5ed86daf3e13a5872a91c88f">
+    <title>没事点两下</title>
+    <script type="text/javascript" src="cocos2d-js-v3.7.js" charset="UTF-8"></script>
+</head>
+<body>
+<canvas id="gameCanvas" width="640" height="1136"></canvas>
+<script type="text/javascript">
+    window.onload = function(){
+        cc.game.onStart = function(){
+            cc.view.adjustViewPort(true);
+            cc.view.setDesignResolutionSize(640,1139,3);
+            cc.view.resizeWithBrowserSize(true);
+            //加载资源文件
+            cc.LoaderScene.preload(res, function () {
+                cc.director.runScene(new MainScene());
+            }, this);
+        };
+        cc.game.run("gameCanvas");
+    };
+</script>
+</body>
+</html>

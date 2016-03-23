@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <title>消消看，挑战1000分</title>
+    <link rel="stylesheet" href="style1.css">
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?7c493eacb9f2335d386c9b1e8ad91b1d";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</head>
+<body>
+<div class="page">
+    <div class="header">
+        <div class="title"><span></span></div>
+        <div class="text">
+            <div id="targetScore"></div>
+            <div id="score"></div>
+        </div>
+    </div>
+    <div class="GameStage" id="GameStage"></div>
+    <div class="btns">
+        <a href="javascript:void(0)" class="btn_01" id="reset"><span>重新开始</span></a>
+    </div>
+    <div class="memo">技巧提示 ^_^</div>
+    <div class="memo">一次消除的砖块越多，得分越高；</div>
+    <div class="memo">尽量把同颜色的砖块积累到一起消除；</div>
+</div>
+<div id="shareLayer">
+    <div class="zan"></div>
+    <div id="tit" class="gameText"></div>
+    <a class="btn_01" id="shareBtn111"><span>获取得分评语</span></a>
+    <a href="javascript:void(0)" class="btn_01" id="reset_1"><span>重新开始</span></a>
+    <a href="http://sqvdj.cn" class="btn_01" id="reset_2" ><span>更多游戏</span></a>
+</div>
+
+<div id="hint" style="display: none">
+    <img src="share_white.gif">
+</div>
+
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js" charset="UTF-8"></script>
+<script type="text/javascript" src="wx.js?26"></script>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+    window.onload = function () {
+        //填写分享内容
+        var shareTimeline = {
+            title: '游戏后，脑凉后，点击“获取得分评语”按钮获取得分排名，进行分享~', // 分享标题
+            desc: '消消看，貌似能上1500的就能上天呀', // 分享描述
+            link: 'http://sqvdj.cn/game/xxk/index.html', //分享链接
+            imgUrl: 'http://sqvdj.cn/game/xxk/share.png', // 分享图标
+            success : function () {
+                $('#hint').hide();
+            }
+        };
+        $.ajax({
+            url: 'http://m.lehoo.me/wx/rsx/1'
+            , type: 'post'
+            , data: {
+                url: location.href.split('#')[0]
+            }
+        }).done(function (r) {
+            wx.config({
+                debug: false,
+                appId: r.appid,
+                timestamp: r.timestamp,
+                nonceStr: r.nonceStr,
+                signature: r.signature,
+                jsApiList: [
+                    'checkJsApi',
+                    'onMenuShareTimeline',
+                    'onMenuShareAppMessage',
+                    'hideMenuItems',
+                    'chooseImage'
+                ]
+            });
+            //微信api调用
+            wx.ready(function () {
+                wx.onMenuShareAppMessage(shareTimeline);
+                wx.onMenuShareTimeline(shareTimeline);
+            });
+        });
+
+        $('#shareBtn111').click(function (obj) {
+            $('#hint').show();
+            shareTimeline.title = $('#tit').text();
+        });
+    };
+</script>
+<script type="text/javascript">
+    /*20:3 创建于 2016-03-05*/
+    var cpro_id = "u2544195";
+</script>
+<script src="http://cpro.baidustatic.com/cpro/ui/cm.js" type="text/javascript"></script>
+</body>
+</html>
+<style>
+
+    .app-guide {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    min-width: 520px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, .64);
+    box-shadow: 0 -1px 1px rgba(0, 0, 0, .10);
+    z-index: 200001
+}
+
+.app-guide .guide-cont {
+    position: relative;
+    display: block;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    padding: 4px 0;
+    margin: 0 90px 0 20px
+}
+
+.app-guide .guide-cont.touch::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .06);
+    position: absolute;
+    top: 0;
+    left: -20px;
+    padding: 0 90px 0 20px
+}
+
+.app-guide .guide-logo {
+    float: left;
+    width: 42px;
+    height: 42px;
+    vertical-align: top;
+    margin-right: 8px
+}
+
+.app-guide .guide-slogon, .app-guide .guide-dc {
+    color: #fff;
+    font-size: 16px;
+    line-height: 20px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden
+}
+
+.app-guide .guide-slogon span {
+    color: #fff;
+    font-size: 16px;
+    line-height: 20px;
+    margin-right: 6px
+}
+
+.app-guide .guide-slogon span:last-of-type {
+    margin-right: 0
+}
+
+.app-guide .guide-dc {
+    color: #ccc;
+    font-size: 14px;
+    line-height: 22px
+}
+
+.app-guide .guide-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 80px;
+    height: 30px;
+    background-color: #62af01;
+    border: 0 none;
+    border-radius: 3px;
+    color: #fff;
+    font: 14px/30px microsoft yahei, helvetica, arial, sans-serif;
+    text-align: center;
+    padding: 0
+}
+
+.app-guide .guide-btn.touch {
+    background-color: #529301
+}
+
+.app-guide .guide-close {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    line-height: 999em;
+    overflow: hidden
+}
+
+.app-guide .guide-close::before {
+    content: "";
+    position: absolute;
+    right: 3px;
+    bottom: 2px;
+    width: 28px;
+    height: 28px;
+    background-color: #262626;
+    border-radius: 28px
+}
+
+.app-guide .guide-close::after {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 2px;
+    width: 9px;
+    height: 9px;
+    background: url(http://qbwx.qpic.cn/mmbiz/3ia2ElCKoJfMJxMpF9RYq75qAb9hfZBWWCj0qtB7kPSzBeRLhibZWQPXKbibD6YOSnoHBN2jxqIiaJgbJpOibibCBjTQ/640) no-repeat 0 0;
+    -webkit-background-size: 9px auto;
+    background-size: 9px auto
+}
+
+.guide-fixed .footer {
+    padding-bottom: 65px
+}</style>
+
+

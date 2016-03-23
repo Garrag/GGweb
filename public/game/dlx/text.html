@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+    <title></title>
+</head>
+<body>
+    <div id="spn"></div>
+    <script src="http://static.adwo.com/jssdk/jssdk.min.js"></script>
+    <script type="text/javascript">
+        var test = new adwojs({
+            eid: 'spn',
+            aid: '8ac4236217ea44ad8dcc3cb2b526178c', //申请的android平台pid
+            pid: '52033f05b44246ab9d2fa5cd2b110688', //申请的iphone平台pid
+            bt: true, //是否开启测试广告，用于客户在申请PID过程中的广告测试,默认值为false
+            af: true, //是否自动适合ipad平板广告，默认值为true。
+            so: false,//是否在点击广告时，新开一个窗口，默认为false，表示不新开窗口
+            dawx: false,//android下微信流量是否关闭，默认false，表示不关闭
+            danwx: false,//android下非微信流量是否关闭，默认false，表示不关闭
+            diwx: false,//ios下微信流量是否关闭，默认false，表示不关闭
+            dinwx: false,//ios下非微信流量是否关闭，默认false，表示不关闭
+            width: 320, //广告图片宽度(除320外，还有720宽度，用于ipad中显示)
+            height: 50  //广告图片高度(除50外，还有110高度，用于ipad中显示)
+        });
+        test.send();
+    </script>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>眼睛肿么了?20关以上才是标准!</title>
+    <meta name="description" content="还在玩手机吗？看看自己的视力水平再说吧！">
+    <meta name="keywords" content="色觉測試,色弱测试,手机旅游,小游戏">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+    <meta http-equiv="expires" content="-1">
+    <meta property="og:title" content="标题！">
+    <meta property="og:description" content="你想知道自己的色彩分辨能力有多强吗？快來进行免费的色彩测试。找出所有色块里颜色不同的一个!">
+    <meta name="x-share-desc" content="你想知道自己的色彩分辨能力有多強吗？快来进行免费的视觉测试！" data-custom="你想知道自己的色彩分辨能力有多強吗？快来进行免费的视觉测试！">
+    <meta name="x-share-icon" content="share_logo.gif">
+    <meta property="og:image" content="icon.png">
+    <link rel="stylesheet" href="m.css">
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?7c493eacb9f2335d386c9b1e8ad91b1d";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+    <script type="text/javascript" async="" src="color.min.js"></script>
+
+    <style>
+        #mask {
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            display: none;
+            position: fixed;
+            z-index: 999;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        #mask img {
+            top: 0px;
+            right: 20px;
+            position: absolute;
+        }
+
+    </style>
+
+
+</head>
+
+<body>
+<img src="share_logo.gif" width="0" height="0" style="position:absolute">
+
+<div id="mask" onclick="javascript:$('#mask').css('display', 'none');"><img src="share_white.gif"></div>
+<div class="grid">
+    <div class="page hide" id="index" style="display: block;">
+        <h1>测测你的视力有多强</h1>
+
+        <h1>The Color !</h1>
+
+        <div id="help">找出所有色块里颜色不同的一个
+            <br><span>世界上只有3个人能玩到48关</span>
+        </div>
+
+        <div class="btns">
+            <button data-type="color" class="btn play-btn">
+                开始测试
+            </button>
+        </div>
+
+    </div>
+    <div class="page hide" id="room">
+        <header>
+                <span class="lv">
+                    得分：
+                    <em>
+                        0
+                    </em>
+                </span>
+                <span class="time">
+                </span>
+                <span class="btn btn-pause">
+                    暂停
+                </span>
+        </header>
+        <div id="box" class="lv1">
+        </div>
+
+    </div>
+    <div class="page hide" id="dialog">
+        <div class="inner">
+            <div class="content gameover">
+                <h2 id="aaaa" style="font-size:28px;margin:5px;">0分</h2>
+
+                <p>
+                    你的视力达到以下动物的水平：
+                </p>
+
+                <h3 id="aaaaa"></h3>
+
+                <div class="btn-wrap">
+                    <a class="btn btn-boyaa" href="#" id="shareBut"
+                       style="background-color: red;">获取评语</a>
+                    <button class="btn btn-restart">再玩一次</button>
+                    <a class="btn btn-boyaa" href="http://sqvdj.cn"
+                       style="background-color: green;">更多游戏</a>
+
+                    <p align='center'>
+                        <!--<a href="###" style='color:#ffffff;text-decoration:none;'>排行榜</a>-->
+                        <!--<a href="###" style='margin-left:20px;color:#ffffff;text-decoration:none;'>更多游戏</a>-->
+                    </p>
+
+                </div>
+                <br>
+            </div>
+            <div class="content pause">
+                <h3>
+                    游戏暂停
+                </h3>
+
+                <div class="btn-wrap">
+                    <button class="btn btn-resume">继续</button>
+                    <!--<a class="btn" href="###" style='color:#ffffff;text-decoration:none;'>排行榜</a>-->
+                    <!--<a class="btn" href="###" style='color:#ffffff;text-decoration:none;'>更多游戏</a>-->
+                    <div id="ad_control" style="display:none;">
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js" charset="UTF-8"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?be36b99e4a9c2699f46e8fdc9372a4a9";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <script>
+        window.onload = function () {
+            $('#shareBut').click(function () {
+                $('#mask').css('display', 'block');
+                shareTimeline.title = "呵呵，我就是:"+$('#aaaa').text().trim()+'，视力水平:' + $('#aaaaa').text().trim();
+            });
+
+            //填写分享内容
+            var shareTimeline = {
+                title: '游戏后，擦擦眼，点击“获取评语”进行分享', // 分享标题
+                desc: '不管你信不信，反正我是看到有人玩到了40关以上', // 分享描述
+                link: 'http://sqvdj.cn/game/sl/index.html', //分享链接
+                imgUrl: 'http://sqvdj.cn/game/sl/icon.png' // 分享图标
+            };
+            $.ajax({
+                url: 'http://m.lehoo.me/wx/rsx/1'
+                , type: 'post'
+                , data: {
+                    url: location.href.split('#')[0]
+                }
+            }).done(function (r) {
+                wx.config({
+                    debug: false,
+                    appId: r.appid,
+                    timestamp: r.timestamp,
+                    nonceStr: r.nonceStr,
+                    signature: r.signature,
+                    jsApiList: [
+                        'checkJsApi',
+                        'onMenuShareTimeline',
+                        'onMenuShareAppMessage',
+                        'hideMenuItems',
+                        'chooseImage'
+                    ]
+                });
+                //微信api调用
+                wx.ready(function () {
+                    wx.onMenuShareAppMessage(shareTimeline);
+                    wx.onMenuShareTimeline(shareTimeline);
+                });
+            });
+        };
+        (function () {
+            var libs = document.createElement('script');
+            libs.type = 'text/javascript';
+            libs.async = true;
+            libs.src = 'color.min.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(libs, s);
+        })();
+    </script>
+</div>
+<script type="text/javascript">
+    /*20:3 创建于 2015-09-08*/
+    var cpro_id = "u2301230";
+</script>
+<script src="http://cpro.baidustatic.com/cpro/ui/cm.js" type="text/javascript"></script>
+</body>
+</html>
+

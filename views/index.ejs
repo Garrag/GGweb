@@ -1,0 +1,47 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <title>GGame小游戏</title>
+    <% include ./ui/meta.ejs%>
+    <% include ./ui/link.ejs%>
+</head>
+<body>
+
+<%include ./ui/header.ejs%>
+
+<div data-am-widget="list_news" class="am-list-news am-list-news-default" >
+    <div class="am-list-news-bd">
+        <ul class="am-list">
+            <%for(var i = 0; i <games.length ; i++){%>
+            <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
+                <div class="am-u-sm-4 am-list-thumb">
+                    <a href='<%=games[i].uri%>' class="">
+                        <img src="<%=games[i].imageUri%>"/>
+                    </a>
+                </div>
+                <div class=" am-u-sm-8 am-list-main">
+                    <h3 class="am-list-item-hd"><%=games[i].name%></h3>
+                </div>
+                <button type="button" onclick="openGame('<%=games[i].uri%>')" class="am-btn am-btn-success am-round" style="float: right">开始</button type="button">
+            </li>
+            <%}%>
+        </ul>
+    </div>
+</div>
+
+<script>
+    var openGame = function(url){
+        console.log(url);
+        window.location.href = url;
+    }
+</script>
+<script src="assets/js/jquery.min.js"></script>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/amazeui.ie8polyfill.min.js"></script>
+<script src="assets/js/amazeui.min.js"></script>
+<script src="/javascripts/jweixin-1.0.0.js" charset="UTF-8"></script>
+<script src="/javascripts/wx_share.js"></script>
+
+</body>
+</html>
