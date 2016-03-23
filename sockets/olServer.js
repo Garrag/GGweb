@@ -4,13 +4,15 @@
  */
 module.exports = function (io) {
     io.sockets.on('connection', function (socket) { //链接监听
-        //console.log('新连接:' + socket);
-        for(var k in socket) {
-            console.log(k + ' : ' + socket[k]);
-        }
-        socket.emit('news', { hello: 'world' });
-        socket.on('my other event', function (data) {
-            console.log(data);
+        //socket.emit('news', {hello: 'world'});
+        socket.on('login', function (data) {
+            //console.log('--------------------------------\n' + data.name);
+            socket.broadcast.emit('join', {name:data.name});
         });
+
+        socket.on('move', function (data) {
+            console.log('move : ' + data.x + ":" + data.y);
+        });
+
     });
 };

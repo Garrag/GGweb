@@ -2,27 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>online游戏</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>online</title>
 </head>
 <body>
 
 
+<canvas id="game" style="border: 1px solid black"></canvas>
+
+
 <script src="/socket.io/socket.io.js"></script>
+<script src="./js/utils.js"></script>
 <script>
-    var socket = io('http://localhost:8000');
-    socket.on('connect', function(){
-        console.log('连接成功');
-    });
-    socket.on('event', function(data){
-        console.log(data);
-    });
-    socket.on('disconnect', function(){
-        console.log('要退出了');
-        socket.emit('exit', {sc:socket});
-    });
-    socket.on('news', function (data) {
-        console.log(data);
-    });
+
+    window.onload = function () {
+        var socket = io('http://localhost:8000');
+        socket.on('connect', function () {
+            socket.emit('login', {'name': 'Dall'});
+        });
+        //监听事件
+        socket.on('event', function (data) {
+        });
+        socket.on('disconnect', function () {
+        });
+
+        var canvas = document.getElementById('game'),
+                context = canvas.getContext('2d');
+        canvas.width = document.body.clientWidth;
+        canvas.height = screen.height * 0.8;
+        var touch = utils.captureTouch(canvas);
+
+        //获取鼠标对于元素的相对位置
+        canvas.addEventListener('touchmove', function (event) {
+            socket.emit('move', touch);
+        });
+    };
 
 
 </script>
