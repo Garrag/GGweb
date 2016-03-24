@@ -4,41 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
     <title>online</title>
+    <link href="css/style.css" rel="stylesheet">
 </head>
-<body>
+<body style="text-align: center">
 
-
-<canvas id="game" style="border: 1px solid black"></canvas>
-
+<canvas id="game" style="border: 1px solid black;"></canvas>
 
 <script src="/socket.io/socket.io.js"></script>
+<script src="./js/Class.js"></script>
 <script src="./js/utils.js"></script>
+<script src="./js/game.js"></script>
 <script>
-
-    window.onload = function () {
-        var socket = io('http://localhost:8000');
-        socket.on('connect', function () {
-            socket.emit('login', {'name': 'Dall'});
-        });
-        //监听事件
-        socket.on('event', function (data) {
-        });
-        socket.on('disconnect', function () {
-        });
-
-        var canvas = document.getElementById('game'),
-                context = canvas.getContext('2d');
-        canvas.width = document.body.clientWidth;
-        canvas.height = screen.height * 0.8;
-        var touch = utils.captureTouch(canvas);
-
-        //获取鼠标对于元素的相对位置
-        canvas.addEventListener('touchmove', function (event) {
-            socket.emit('move', touch);
-        });
-    };
-
-
+    window.onload = game.init(document.getElementById('game'));
 </script>
 </body>
 </html>
