@@ -10,9 +10,7 @@ module.exports = function (io) {
         });
 
         socket.on('move', function (data) {
-            console.log('move : ' + data.x + ":" + data.y);
-            //socket.broadcast.emit('move', data);
-            socket.emit('move', data);
+            socket.broadcast.emit('move', data);
         });
 
     });

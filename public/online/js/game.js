@@ -19,7 +19,7 @@ var game = {
     }
 };
 
-//网络管理员
+//网络管
 var NetManager = Class.extend({
     socket: null,
     init: function (port) {
